@@ -28,7 +28,7 @@ const AllBlogs = () => {
   };
 
   const filterBlogs = (blog, index) => {
-    if (index > page - 1 && index < page + limit) return true;
+    if (index >= page * limit && index < limit * (page + 1)) return true;
     return false;
   };
 
