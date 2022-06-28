@@ -8,7 +8,7 @@ const AllBlogs = () => {
   const limit = Number(searchParams.get("limit"))
     ? Number(searchParams.get("limit"))
     : blogPosts.length;
-  const page = Number(searchParams.get("page")) + 1;
+  const page = Number(searchParams.get("page"));
 
   const sortblogs = (a, b) => {
     if (sortOrder === "asc") {
