@@ -1,13 +1,13 @@
-import { blogPosts } from "../utils/sampleBlogs";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const AllBlogs = () => {
+const AllBlogs = ({ blogs }) => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const sortOrder = searchParams.get("sortOrder");
   const sortField = searchParams.get("sortField");
   const limit = Number(searchParams.get("limit"))
     ? Number(searchParams.get("limit"))
-    : blogPosts.length;
+    : blogs.length;
   const page = Number(searchParams.get("page"));
 
   const sortblogs = (a, b) => {
@@ -34,7 +34,10 @@ const AllBlogs = () => {
 
   return (
     <div>
-      {blogPosts
+      <button onClick={() => navigate("/blogs/submit-blog")}>
+        Create New Post
+      </button>
+      {blogs
         .filter((blog, index) => filterBlogs(blog, index))
         .sort((a, b) => sortblogs(a, b))
         .map((blog) => {

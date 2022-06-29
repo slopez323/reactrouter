@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom";
-import { blogPosts } from "../utils/sampleBlogs";
 
-const BlogPost = () => {
+const BlogPost = ({ blogs }) => {
   const params = useParams();
-  const blog = blogPosts.find((blog) => blog.id === Number(params.blogId));
+  const blog = blogs.find((blog) => blog.id === Number(params.blogId));
   return (
     <div>
       <p>Title: {blog.title}</p>
